@@ -1,0 +1,31 @@
+<title>Show Item</title>
+
+<div class="container-fluid" id="showpage">
+
+    <div class="row">
+
+      <div class="col-md-5" id="leftCol">
+          <%= image_tag @item.image_url(:medium) if @item.image? %>
+      </div>
+
+      <div class="col-md-7" id="rightCol">
+          <h2><%= @item.name %></h2>
+          <h3><%= @item.price %></h3>
+
+          <h5><%= @item.description.html_safe %></h5>
+          <% if signed_in? %>
+            <%= link_to "", class: "button", data: {target: @cart_action, addUrl: add_to_cart_path(@item), removeUrl: remove_from_cart_path(@item)} do %>
+              <i class="fi-shopping-cart"></i>
+              <span><%= @cart_action %></span> Cart
+            <% end %>
+          <% end %>
+          <% if admin_signed_in? and current_admin.admin == true %>
+            <%= link_to "Изменить", edit_item_path , class: "button" %>
+          <% end %>
+          <h5>
+          	<%= link_to "Назад", items_path, class: "button" %>
+          </h5>
+      </div>
+    </div>
+
+</div>

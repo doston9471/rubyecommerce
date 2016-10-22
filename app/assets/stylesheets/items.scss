@@ -1,0 +1,64 @@
+
+ // PRODUCT SECTION DESIGN
+.productlayer{
+  margin-top: 40px;
+  background: none;
+}
+.productlayer .img{
+  margin-top: 10px;
+}
+.well{
+  background: none;
+  border: none;
+}
+
+// CAROUSEL CSS
+.carousel-inner img {
+    width: 100%;
+    height: 300px!important; // change height here
+}
+.carousel-caption h3 {
+    color: #fff !important;
+}
+@media (max-width: 600px) {
+    .carousel-caption {
+        display: none;
+    }
+}
+
+// Category css
+#categorydiv{
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, .5);
+  background-color: rgb(242,242,242);
+  height: 100%!important;
+  margin: 0px;
+}
+#categorydiv:hover {
+ 
+}
+.hrhr{
+    margin: 3px!important;
+}
+.rightarrows{
+    float: right;
+    
+}
+.catul{
+    font-size: 16px;
+}
+.catul>li:hover{
+   box-shadow: 5px 5px 5px 5px rgba(0.1,0.1,0.1,0.1);
+}
+.catul>li{
+    text-decoration: none;
+    list-style: none;
+    margin: 2px;
+}
+.catul>li> a:hover {
+    background-color: green;
+    transition: opacity 0.3s ease-in-out;
+}
+.catul>li>a{
+    text-decoration: none;
+    color: black;
+}

@@ -1,0 +1,101 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
+ @import 'bootstrap/theme';
+
+             /*LALALALA*/
+ html{
+     height: 100%;
+ }
+ body {
+    
+     font: 400 15px/1.8 Lato, sans-serif;
+     color: #777;
+     height: 100%;
+     min-height: 100%;
+ }
+
+ .nav-tabs li a {
+     color: #777;
+ }
+ .navbar {
+     font-family: Montserrat, sans-serif;
+     
+     margin-bottom: 0;
+     background-color: rgb(6,29,37)!important;
+     border: 0;
+     font-size: 13px !important;
+     letter-spacing: 4px;
+     opacity: 0.7;
+ }
+ .navbar li a, .navbar .navbar-brand {
+     color: #d5d5d5 !important;
+ }
+ .navbar-nav li a:hover {
+     color: #fff !important;
+ }
+ .navbar-nav li.active a {
+     color: #fff !important;
+     background-color: #29292c !important;
+ }
+ .navbar-default .navbar-toggle {
+     border-color: transparent;
+ }
+ .open .dropdown-toggle {
+     color: #fff;
+     background-color: #555 !important;
+ }
+ .dropdown-menu li a {
+     color: #000 !important;
+ }
+ .dropdown-menu li a:hover {
+     background-color: red !important;
+ }
+
+  //// END OF NAVIGATION BAR
+
+
+// FOOTER CSS
+
+footer {
+    background: #061D25;
+    padding: 20px 0;
+    width: 100%;
+    margin: 0 0;
+}
+
+.footer a {
+    color: #70726F;
+    font-size: 20px;
+    padding: 10px;
+    border-right: 1px solid #70726F;
+    -webkit-transition: all .5s ease;
+    transition: all .5s ease;
+}
+
+.footer a:first-child {
+    border-left: 1px solid #70726F;
+}
+
+.footer a:hover {
+    color: white;
+    -webkit-transition: all .5s ease;
+    transition: all .5s ease;
+}
+
+@import 'items.scss';
+@import 'itemdetails.scss';

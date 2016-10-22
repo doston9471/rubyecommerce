@@ -1,0 +1,185 @@
+
+
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+            <li data-target="#myCarousel" data-slide-to="3"></li>
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+            <div class="item active">
+                <%= image_tag("ny.jpg", :alt => "New york") %>
+
+                <div class="carousel-caption">
+                    <h3>New York</h3>
+
+                    <p>The atmosphere in New York is lorem ipsum.</p>
+                </div>
+            </div>
+
+            <div class="item">
+                <%= image_tag("chicago.jpg", :alt => "Chicago") %>
+                <div class="carousel-caption">
+                    <h3>Chicago</h3>
+
+                    <p>Thank you, Chicago - A night we won't forget.</p>
+                </div>
+            </div>
+
+            <div class="item">
+                <%= image_tag("back.jpg", :alt => "HAHA") %>
+                <div class="carousel-caption">
+                    <h3>Modern Talking</h3>
+
+                    <p>Jilly Beans - Anonymous we won't forget.</p>
+                </div>
+            </div>
+
+            <div class="item">
+                <%= image_tag("la.jpg", :alt => "LA") %>
+
+                <div class="carousel-caption">
+                    <h3>LA</h3>
+
+                    <p>Even though the traffic was a mess, we had the best time.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Left and right controls -->
+        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+
+    <!--   PRODUCT LAYOUT HERE   -->
+    <h2 id = "mytest" style="text-align:center;"> List of products here </h2>
+
+    <div class = "container-fluid productlayer" >
+
+      <div class="row">
+      <div class="col-md-3" id="categorydiv">
+           <div class="category">
+               <ul class="catul">
+            	  <% Category.all.each do |category| %>
+            	    <li><%= link_to category.title, items_path(category: category.title), class: 'categorylink' %>
+            	    <i class="fa fa-angle-right rightarrows" aria-hidden="true"></i>
+            	    </li>
+            	    <hr class="hrhr">
+            	  <% end %>
+        	  </ul>
+            </div>
+      </div>
+
+      <div class="col-md-9" id="productlistdiv">
+          <div class="well">
+      <div class="row">
+        <% @items.each do |item| %>
+          <div class="col-md-3 blog-main box text-center">
+            <div class="panel panel-info">
+                <div class="img">
+                  <%= image_tag item.image_url(:thumb), class: "img-thumbnail" %>
+                </div>
+				<h4><%= item.name %></h3>
+                <h5><%= item.price %></h5>
+                <div class="btn-group" role="group" aria-label="...">
+                  <%= link_to 'Show', item, class: 'btn btn-success' %>
+                  <%= link_to 'Add to Card', add_to_cart_path(item), class: 'btn btn-success addtocardbutton' %>
+                </div>
+                <br/>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    </div>
+    </div>
+    </div>
+
+<script>
+
+
+
+$("a.addtocardbutton").click(function(e) {
+  e.preventDefault();
+  var atag=$(this);
+  //alert(atag);
+  putToCard(atag);
+});
+
+function updateMyCard(option)
+{
+   var cartnum=$("#cartcount");
+   var value = cartnum.text();
+   var num;
+   if(option=="increase")
+   num=parseInt(value)+1;
+   else  num=parseInt(value)-1;
+   if(num<0) num=0;
+   value=num.toString();
+   cartnum.text(value);
+   //alert(cartnum+" "+ value+" "+ num+" "+cartnum.text());
+}
+
+function putToCard(atag)
+{
+    // if (typeof(Storage) !== "undefined") {
+        // Code for localStorage/sessionStorage.
+      // updateMyCard("increase");
+      // updateMyCard("decrease");
+      var useroption;
+      var prohref = atag.attr('href').split("/");
+      var productId=prohref[prohref.length-1].trim();
+      var value= atag.text();
+
+    //  alert(localStorage.getItem(productId));
+      var existingPro = sessionStorage.getItem(productId)
+      var countValue=1;
+      if(existingPro!=null)
+      {
+          countValue=countValue+ parseInt(existingPro);
+      }
+      updateMyCard("increase");
+      // Store
+      sessionStorage.setItem(productId, countValue);
+      // Retrieve
+      // document.getElementById("result").innerHTML = localStorage.getItem("lastname");
+
+
+      alert(productId+" "+ value);
+      console.log(value);
+
+      // $.ajax({
+      //     url: urls,
+      //     type: 'GET',
+      //     dataType: "json",
+      //     success: function(data, status, jqXHR){
+      //       console.log(data);
+      //       alert("data received");
+      //     },
+      // })
+      //         .done(function(){console.log("success");})
+      //         .fail(function(){console.log("failed");})
+      //         .always(function(){console.log("complete");});
+      //
+
+      // } else {
+      //     // Sorry! No Web Storage support..
+      //     alert("doesnt support local storage");
+      // }
+
+
+}
+
+
+
+</script>
